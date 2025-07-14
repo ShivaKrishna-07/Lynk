@@ -2,6 +2,27 @@
 
 @custom-variant dark (&:where(.dark &));
 
+/* Font face declarations */
+@font-face {
+  font-family: "ClashDisplaySemibold";
+  src: url("../../public/fonts/ClashDisplay-Semibold.otf");
+}
+
+@font-face {
+  font-family: "ClashDisplayRegular";
+  src: url("../../public/fonts/ClashDisplay-Regular.otf");
+}
+
+@font-face {
+  font-family: "ClashDisplayMedium";
+  src: url("../../public/fonts/ClashDisplay-Medium.otf");
+}
+
+@font-face {
+  font-family: "ClashDisplayBold";
+  src: url("../../public/fonts/ClashDisplay-Bold.otf");
+}
+
 @theme {
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(0 0% 3.9%);
@@ -30,11 +51,19 @@
   --radius-lg: 0.5rem;
   --radius-md: calc(0.5rem - 2px);
   --radius-sm: calc(0.5rem - 4px);
+  --radius-xs: calc(0.5rem - 6px);
   --color-color-1: hsl(0 100% 63%);
   --color-color-2: hsl(270 100% 63%);
   --color-color-3: hsl(210 100% 63%);
   --color-color-4: hsl(195 100% 63%);
   --color-color-5: hsl(90 100% 63%);
+
+  --font-ClashDisplaySemibold: ClashDisplaySemibold, sans-serif;
+  --font-ClashDisplayBold: ClashDisplayBold, sans-serif;
+  --font-ClashDisplayRegular: ClashDisplayRegular, sans-serif;
+  --font-ClashDisplayMedium: ClashDisplayMedium, sans-serif;
+
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
 }
 
 .dark {
@@ -67,4 +96,39 @@
   --color-color-3: hsl(210 100% 63%);
   --color-color-4: hsl(195 100% 63%);
   --color-color-5: hsl(90 100% 63%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+} 
+
+/* Custom scrollbar styles */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-md;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-foreground;
+  }
+  
+  .scroll-custom {
+    scrollbar-width: none;
+  }
 }
