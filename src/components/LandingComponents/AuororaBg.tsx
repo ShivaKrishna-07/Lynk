@@ -9,7 +9,7 @@ export interface CommonProps {
 
 export interface TimeProps {
   time?: number;
-  speed?: number;
+  speed?: number; 
 }
 
 export interface ControlProps {
