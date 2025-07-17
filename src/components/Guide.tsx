@@ -17,7 +17,7 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 
 interface GuideProps {
   title?: string;
-  size?: "default" | "sm" | "lg" | "icon" | null | undefined;
+  size?: "default" | "sm" | "lg" | "icon" | "xl" | null | undefined;
 }
 
 export default function Guide({ title = "Guide", size }: GuideProps) {
@@ -40,7 +40,7 @@ export default function Guide({ title = "Guide", size }: GuideProps) {
             All your social media in one place.
           </SheetDescription>
         </SheetHeader>
-        <div className="mt-6 space-y-6">
+        <div className=" px-6 space-y-6">
           <Section title={guideData.features.title}>
             <div className="space-y-4">
               {guideData.features.content.map((item, index) => (

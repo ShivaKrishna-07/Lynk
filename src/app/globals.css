@@ -23,6 +23,99 @@
   src: url("../../public/fonts/ClashDisplay-Bold.otf");
 }
 
+/* Define keyframes outside of @theme */
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg))
+      translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg))
+      translateY(calc(var(--radius) * 1px))
+      rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
+}
+
+@keyframes aurora-border {
+  0%,
+  100% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+  25% {
+    border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%;
+  }
+  50% {
+    border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%;
+  }
+  75% {
+    border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%;
+  }
+}
+
+@keyframes aurora-1 {
+  0%,
+  100% {
+    top: 0;
+    right: 0;
+  }
+  50% {
+    top: 50%;
+    right: 25%;
+  }
+  75% {
+    top: 25%;
+    right: 50%;
+  }
+}
+
+@keyframes aurora-2 {
+  0%,
+  100% {
+    top: 0;
+    left: 0;
+  }
+  60% {
+    top: 75%;
+    left: 25%;
+  }
+  85% {
+    top: 50%;
+    left: 50%;
+  }
+}
+
+@keyframes aurora-3 {
+  0%,
+  100% {
+    bottom: 0;
+    left: 0;
+  }
+  40% {
+    bottom: 50%;
+    left: 25%;
+  }
+  65% {
+    bottom: 25%;
+    left: 50%;
+  }
+}
+
+@keyframes aurora-4 {
+  0%,
+  100% {
+    bottom: 0;
+    right: 0;
+  }
+  50% {
+    bottom: 25%;
+    right: 40%;
+  }
+  90% {
+    bottom: 50%;
+    right: 25%;
+  }
+}
+
 @theme {
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(0 0% 3.9%);
@@ -62,8 +155,6 @@
   --font-ClashDisplayBold: ClashDisplayBold, sans-serif;
   --font-ClashDisplayRegular: ClashDisplayRegular, sans-serif;
   --font-ClashDisplayMedium: ClashDisplayMedium, sans-serif;
-
-  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
 }
 
 .dark {
@@ -102,12 +193,12 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   body {
     @apply bg-background text-foreground;
     font-family: Arial, Helvetica, sans-serif;
   }
-} 
+}
 
 /* Custom scrollbar styles */
 @layer utilities {
@@ -115,20 +206,48 @@
     width: 6px;
     height: 6px;
   }
-  
+
   ::-webkit-scrollbar-track {
     @apply bg-muted/30;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     @apply bg-primary/30 rounded-md;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-foreground;
   }
-  
+
   .scroll-custom {
     scrollbar-width: none;
+  }
+
+  /* Add the animate-orbit utility classes */
+  .animate-orbit {
+    animation: orbit calc(var(--duration) * 1s) linear infinite;
+  }
+
+  .animate-orbit-reverse {
+    animation: orbit calc(var(--duration) * 1s) linear infinite reverse;
+  }
+}
+
+/* Custom components */
+@layer components {
+  .bubble-button {
+    @apply relative z-[1] overflow-hidden;
+  }
+
+  .bubble-button::after {
+    @apply content-[""] flex justify-center items-center z-[100] transition-all duration-500 ease-in-out h-full w-full bg-black left-0 -bottom-full absolute rounded-full;
+  }
+
+  .bubble-button:hover::after {
+    @apply bottom-0 rounded-none;
+  }
+
+  .bubble-button:hover {
+    @apply text-white;
   }
 }
