@@ -3,7 +3,7 @@
 import { useSubscriptionStore } from "@/store/PricingStore/useSubscriptionStore";
 import PricingCard from "./PricingCard";
 import { useCallback, useEffect } from "react";
-import PricingLoader from "../Loaders/PricingLoader";
+import PricingCardLoader from "../Loaders/PricingLoader";
 
 export default function PricingSection() {
   const localPricingPlan = [
@@ -79,7 +79,7 @@ export default function PricingSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-3 md:gap-7 max-w-6xl mx-auto">
           {isFetchingPlans
             ? Array.from({ length: 3 }).map((_, index) => (
-                <PricingLoader
+                <PricingCardLoader
                   key={index}
                   classname={index === 1 ? "scale-110" : ""}
                 />

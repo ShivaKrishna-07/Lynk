@@ -3,6 +3,8 @@ import Navbar from "@/components/LandingComponents/Navbar";
 import Home from "@/components/LandingComponents/Home";
 import Features from "@/components/LandingComponents/Features";
 import About from "@/components/LandingComponents/About";
+import { WhoIsItFor } from "@/components/LandingComponents/WhoIsItForSection";
+import PricingSection from "@/components/LandingComponents/PricingSection";
 
 export default function Page() {
   return (
@@ -11,6 +13,8 @@ export default function Page() {
       <Home/>
       <Features/>
       <About/>
+      <WhoIsItFor/>
+      <PricingSection/>
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import Image from "next/image";
-import BuySubscriptionButton from "../Buttons/BuySubscriptionButton";
+import BuySubscriptionButton from "@/components/Buttons/BuySubscriptionButton"
 
 export interface PricingCardProps {
   title: string;

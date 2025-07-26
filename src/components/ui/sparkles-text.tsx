@@ -92,6 +92,13 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
   ...props
 }) => {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  
 
   useEffect(() => {
     const generateStar = (): Sparkle => {
@@ -118,7 +125,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
           } else {
             return { ...star, lifespan: star.lifespan - 0.1 };
           }
-        }),
+        })
       );
     };
 
@@ -127,6 +134,8 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
 
     return () => clearInterval(interval);
   }, [colors.first, colors.second, sparklesCount]);
+
+  if(!mounted) return null;
 
   return (
     <div
